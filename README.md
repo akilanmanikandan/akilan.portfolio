@@ -1,6 +1,6 @@
 # Akilan Manikandan
 
-🔹 Early-career software engineer with internship experience across backend infrastructure, workflow automation, data platforms, and applied machine learning.
+🔹 Software engineer with internship experience across backend infrastructure, workflow automation, data platforms, and applied machine learning.
 
 ## ✦ About Me
 
