@@ -1,120 +1,89 @@
-# Akilan Manikandan Portfolio
+# Akilan Manikandan
 
-🔹 A personal portfolio website built to present my background, internships, projects, technical strengths, and contact information in a clean and modern format.
+🔹 Early-career software engineer with internship experience across backend infrastructure, workflow automation, data platforms, and applied machine learning.
 
-## ✦ Overview
+## ✦ About Me
 
-This portfolio is a responsive personal website designed to highlight:
+I am a Computer Science undergraduate with hands-on experience building backend services, automation workflows, and production-facing data systems. I am particularly interested in engineering roles that focus on reliable software, scalable architecture, and well-designed execution systems.
 
-- Professional summary
-- Internship experience
-- Selected projects
-- Core technical skills
-- Contact information
-
-The site uses a custom visual theme with interactive project cards, a tailored cursor experience, and a polished layout built for a strong first impression.
-
-## ✦ Design Direction
-
-- Blue, white, and coral-pink visual theme
-- Modern glassmorphism-inspired surfaces
-- Interactive cursor and click feedback
-- Expandable vertical project cards
-- Clean, recruiter-friendly content structure
-
-## ✦ Built With
-
-- `HTML5`
-- `CSS3`
-- `JavaScript`
-
-## ✦ Project Structure
-
-```text
-portfolio-site/
-|-- index.html
-|-- styles.css
-|-- script.js
-|-- logo.png
-|-- README.md
-```
-
-## ✦ Features
-
-### 🎯 Professional Positioning
-
-The site is written to present an early-career software engineering profile with emphasis on:
+## ✦ What I Focus On
 
 - Backend engineering
-- Data systems
 - Workflow automation
-- Applied machine learning
+- Data platforms and ETL pipelines
+- Applied machine learning systems
+- Production-oriented software design
 
-### 🧩 Interactive Projects Section
+## ✦ Internship Experience
 
-Each project card expands vertically to reveal:
+### 🔹 Workflow Automation & Data Platforms
+Built automation and reporting systems for multi-tenant workflows, execution orchestration, and ETL-driven reporting pipelines.
 
-- How it works
-- What problem it solves
-- Why it scales
+- Processed 50+ daily reports across 20+ branches
+- Reduced manual effort by 80%
+- Designed orchestration for 100+ pipelines
+- Improved failure recovery time by 50%
+- Maintained 95%+ pipeline success rate
 
-### 🖱 Custom Interactions
+### 🔹 Backend Infrastructure
+Worked on backend platform development for enterprise workflow systems using API-driven architecture and database-backed services.
 
-- Custom cursor styling
-- Click ripple feedback
-- Hover states for interactive elements
-- Smooth reveal transitions
+- Built RESTful services with Django REST Framework and PostgreSQL
+- Improved application responsiveness and production stability
+- Accelerated feature delivery by 60%
 
-### 📱 Responsive Layout
+### 🔹 Machine Learning Systems
+Contributed to speech-based emotion recognition workflows with emphasis on feature engineering, preprocessing, and model quality.
 
-The website is designed to work across desktop and mobile screens with simplified behavior on smaller devices.
+- Worked with LSTM models and MFCC-based feature extraction
+- Improved model accuracy to 97%
+- Increased experimentation speed by 70%
 
-## ✦ Sections Included
+### 🔹 Enterprise Backend Applications
+Supported backend development for HRMS workflows in a structured Agile environment.
 
-- `Hero`
-- `Professional Summary`
-- `Education / Core Stack / Career Interest`
-- `Internships`
-- `Projects`
-- `Technical Areas`
-- `Contact`
+- Built features across Admin, HR, Employee, and Client workflows
+- Contributed to an estimated 30% improvement in operational efficiency
+- Improved deployment efficiency by 20%
 
-## ✦ How To Run
+## ✦ Selected Projects
 
-Open `index.html` directly in a browser.
+### 🛡 Secure Data Storage & File Sharing System
+Designed a secure distributed system for file sharing with encryption, access control, anomaly monitoring, and auditability.
 
-If you want to serve it locally with a simple static server:
+### 🌆 CityPulse Event Recommendation Chatbot
+Built an event discovery and recommendation system using backend APIs, ingestion pipelines, and contextual recommendation logic.
 
-```powershell
-cd portfolio-site
-python -m http.server 8000
-```
+### 🎙 Speech Emotion Recognition
+Developed a speech classification workflow using sequential models, MFCC-based features, and structured preprocessing for multi-class inference.
 
-Then open:
+### 📊 Branchwise and Last Updated n8n Workflows
+Created reusable n8n workflows for branchwise dealership reporting and dataset freshness tracking across multiple client pipelines.
 
-```text
-http://localhost:8000
-```
+## ✦ Technical Strengths
 
-## ✦ Customization
+- `Python`
+- `Java`
+- `FastAPI`
+- `Django REST Framework`
+- `Spring Boot`
+- `PostgreSQL`
+- `MongoDB`
+- `AWS`
+- `Docker`
+- `ETL / ELT`
+- `n8n`
+- `TensorFlow`
+- `PyTorch`
 
-You can easily update:
+## ✦ Education
 
-- Content in `index.html`
-- Styling in `styles.css`
-- Interactions in `script.js`
-- Browser favicon through `logo.png`
-
-## ✦ Purpose
-
-This project was created as a personal portfolio website to showcase my engineering work in a way that is professional, minimal, and easy to navigate for recruiters, hiring managers, and collaborators.
+🎓 **SRM Institute of Science and Technology**  
+B.Tech in Computer Science and Engineering  
+CGPA: `8.35 / 10.0`
 
 ## ✦ Contact
 
 📧 Email: `i.akilanoffl@gmail.com`  
 💼 LinkedIn: [akilanmanikandan](https://www.linkedin.com/in/akilanmanikandan)  
 💻 GitHub: [akilanmanikandan](https://github.com/akilanmanikandan)
-
----
-
-⭐ If you like the project, feel free to fork it or use the structure as inspiration for your own portfolio.
