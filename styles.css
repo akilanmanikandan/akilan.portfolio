@@ -286,6 +286,7 @@ main {
 .hero-metrics,
 .timeline-item,
 .project,
+.certification-item,
 .skill-block,
 .fact,
 .contact-section {
@@ -364,6 +365,7 @@ main {
 .fact,
 .timeline-item,
 .project,
+.certification-item,
 .skill-block,
 .contact-section {
   border-radius: 1.6rem;
@@ -544,6 +546,37 @@ main {
   gap: 1rem;
 }
 
+.certification-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.certification-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.35rem 1.5rem;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.certification-item h3 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.1rem;
+}
+
+.certification-item p {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+}
+
+.certification-item span {
+  color: #ff8591;
+  font-family: "Space Grotesk", sans-serif;
+  white-space: nowrap;
+}
+
 .skill-block {
   padding: 1.5rem;
 }
@@ -593,6 +626,7 @@ main {
 .is-hovered,
 .timeline-item:hover,
 .project:hover,
+.certification-item:hover,
 .skill-block:hover,
 .fact:hover,
 .button:hover,
@@ -658,6 +692,7 @@ main {
   .intro-strip,
   .facts,
   .project-grid,
+  .certification-item,
   .skill-columns,
   .timeline-item,
   .project-detail-grid {
