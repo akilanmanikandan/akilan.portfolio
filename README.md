@@ -1,6 +1,6 @@
 # Akilan Manikandan
 
-Access my website at https://akilanmanikandan.vercel.app/
+Access my website at https://akilanmanikandan.me/
 
 ## ✦ About Me
 

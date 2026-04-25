@@ -281,6 +281,7 @@ main {
 .timeline-item,
 .project,
 .certification-item,
+.certification-item,
 .skill-block,
 .fact,
 .contact-section,
@@ -399,6 +400,7 @@ main {
 .featured-case,
 .timeline-item,
 .project,
+.certification-item,
 .certification-item,
 .skill-block,
 .contact-section {
@@ -893,6 +895,7 @@ body.credential-open .grid-glow {
   .facts,
   .featured-case,
   .project-grid,
+  .certification-item,
   .certification-item,
   .skill-columns,
   .timeline-item,
