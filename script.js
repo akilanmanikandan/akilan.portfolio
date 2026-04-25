@@ -1,10 +1,14 @@
 const cursorDot = document.querySelector(".cursor-dot");
 const cursorRing = document.querySelector(".cursor-ring");
 const interactiveNodes = document.querySelectorAll(".interactive");
-const magneticNodes = document.querySelectorAll(".magnetic");
 const revealNodes = document.querySelectorAll(".reveal");
-const heroPanel = document.querySelector(".hero-panel");
-const projectCards = document.querySelectorAll(".project");
+const credentialItems = document.querySelectorAll("[data-credential-src]");
+const credentialModal = document.querySelector(".credential-modal");
+const credentialViewer = document.querySelector(".credential-viewer");
+const credentialFrame = document.querySelector(".credential-frame");
+const tiltCards = document.querySelectorAll(
+  ".hero-card, .hero-metrics, .featured-case, .timeline-item, .project, .certification-item, .skill-block, .fact, .contact-section, .credential-viewer"
+);
 
 let cursorX = window.innerWidth / 2;
 let cursorY = window.innerHeight / 2;
@@ -41,62 +45,102 @@ function setCursorActive(active) {
   cursorRing.classList.toggle("active", active);
 }
 
-function handleMagneticMove(event) {
-  const node = event.currentTarget;
-  const rect = node.getBoundingClientRect();
-  const offsetX = event.clientX - rect.left - rect.width / 2;
-  const offsetY = event.clientY - rect.top - rect.height / 2;
-  node.style.transform = `translate(${offsetX * 0.08}px, ${offsetY * 0.08}px)`;
-}
-
-function resetMagnetic(event) {
-  event.currentTarget.style.transform = "";
-}
-
 interactiveNodes.forEach((node) => {
   node.addEventListener("mouseenter", () => setCursorActive(true));
   node.addEventListener("mouseleave", () => setCursorActive(false));
 });
 
-magneticNodes.forEach((node) => {
-  node.addEventListener("mousemove", handleMagneticMove);
-  node.addEventListener("mouseleave", resetMagnetic);
-});
+function attachTilt(card) {
+  card.addEventListener("mousemove", (event) => {
+    if (window.innerWidth <= 980) {
+      return;
+    }
 
-projectCards.forEach((card) => {
-  const toggle = card.querySelector(".project-toggle");
-  if (!toggle) {
+    const rect = card.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width;
+    const y = (event.clientY - rect.top) / rect.height;
+    const rotateY = (x - 0.5) * 12;
+    const rotateX = (0.5 - y) * 12;
+
+    card.style.setProperty("--glow-x", `${x * 100}%`);
+    card.style.setProperty("--glow-y", `${y * 100}%`);
+    card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "";
+    card.style.removeProperty("--glow-x");
+    card.style.removeProperty("--glow-y");
+  });
+}
+
+tiltCards.forEach((card) => attachTilt(card));
+
+function openCredential(card) {
+  if (!credentialModal || !credentialFrame) {
     return;
   }
 
-  toggle.addEventListener("click", () => {
-    const isOpen = card.classList.contains("open");
+  const src = card.dataset.credentialSrc;
+  const title = card.dataset.credentialTitle || "Credential preview";
 
-    projectCards.forEach((project) => {
-      project.classList.remove("open");
-      const button = project.querySelector(".project-toggle");
-      if (button) {
-        button.setAttribute("aria-expanded", "false");
-      }
-    });
+  credentialFrame.replaceChildren();
 
-    if (!isOpen) {
-      card.classList.add("open");
-      toggle.setAttribute("aria-expanded", "true");
+  const image = document.createElement("img");
+  image.src = src;
+  image.alt = title;
+  credentialFrame.appendChild(image);
+
+  credentialModal.classList.add("open");
+  credentialModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("credential-open");
+}
+
+function closeCredential() {
+  if (!credentialModal || !credentialFrame || !credentialViewer) {
+    return;
+  }
+
+  credentialModal.classList.remove("open");
+  credentialModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("credential-open");
+  credentialViewer.style.transform = "";
+  credentialViewer.style.removeProperty("--glow-x");
+  credentialViewer.style.removeProperty("--glow-y");
+  window.setTimeout(() => {
+    if (!credentialModal.classList.contains("open")) {
+      credentialFrame.replaceChildren();
+    }
+  }, 220);
+}
+
+credentialItems.forEach((card) => {
+  card.addEventListener("click", () => openCredential(card));
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openCredential(card);
     }
   });
+});
+
+if (credentialModal) {
+  credentialModal.addEventListener("click", (event) => {
+    if (event.target === credentialModal) {
+      closeCredential();
+    }
+  });
+}
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && credentialModal?.classList.contains("open")) {
+    closeCredential();
+  }
 });
 
 window.addEventListener("mousemove", (event) => {
   cursorX = event.clientX;
   cursorY = event.clientY;
-
-  if (heroPanel && window.innerWidth > 980) {
-    const rect = heroPanel.getBoundingClientRect();
-    const depthX = (event.clientX - (rect.left + rect.width / 2)) / rect.width;
-    const depthY = (event.clientY - (rect.top + rect.height / 2)) / rect.height;
-    heroPanel.style.transform = `translate3d(${depthX * 10}px, ${depthY * 10}px, 0)`;
-  }
 });
 
 window.addEventListener("click", (event) => {
