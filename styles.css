@@ -51,74 +51,56 @@ a,
 
 .ambient,
 .grid-glow,
-.cursor-dot,
-.cursor-ring {
+.custom-cursor {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 42px;
+  height: 42px;
   pointer-events: none;
-  z-index: 0;
-}
-
-.ambient {
-  border-radius: 999px;
-  filter: blur(60px);
-  opacity: 0.42;
-}
-
-.ambient-one {
-  width: 30rem;
-  height: 30rem;
-  top: 6%;
-  left: -8%;
-  background: rgba(126, 184, 255, 0.22);
-  animation: floatA 12s ease-in-out infinite;
-}
-
-.ambient-two {
-  width: 26rem;
-  height: 26rem;
-  right: -5%;
-  bottom: 8%;
-  background: rgba(255, 166, 170, 0.18);
-  animation: floatB 16s ease-in-out infinite;
-}
-
-.grid-glow {
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(107, 153, 214, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(107, 153, 214, 0.06) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: radial-gradient(circle at center, black 36%, transparent 82%);
-  opacity: 0.35;
-}
-
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #ff9da5;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transform: translate(-50%, -50%);
-  z-index: 30;
-  mix-blend-mode: screen;
+  transition: transform 0.1s ease-out;
 }
 
-.cursor-ring {
-  width: 38px;
-  height: 38px;
-  border: 1px solid rgba(122, 164, 221, 0.34);
+.cursor-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0 5px rgba(126, 184, 255, 0.4));
+}
+
+.cursor-glow {
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(
+    circle,
+    rgba(126, 184, 255, 0.4) 0%,
+    rgba(179, 136, 255, 0.3) 40%,
+    rgba(255, 143, 136, 0.2) 70%,
+    transparent 100%
+  );
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 29;
-  transition: width 160ms ease, height 160ms ease, border-color 160ms ease, background 160ms ease;
-  background: rgba(112, 174, 245, 0.08);
-  backdrop-filter: blur(5px);
+  z-index: 1;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  filter: blur(8px);
 }
 
-.cursor-ring.active {
-  width: 64px;
-  height: 64px;
-  border-color: rgba(255, 141, 152, 0.75);
-  background: rgba(255, 156, 166, 0.16);
+.custom-cursor.active .cursor-glow {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.custom-cursor.active .cursor-img {
+  transform: scale(1.1);
 }
 
 .site-header,
@@ -315,10 +297,11 @@ main {
   background:
     radial-gradient(
       circle at var(--glow-x, 50%) var(--glow-y, 50%),
-      rgba(255, 255, 255, 0.58),
-      rgba(255, 158, 170, 0.18) 18%,
-      rgba(112, 174, 245, 0.08) 36%,
-      transparent 62%
+      rgba(255, 255, 255, 0.42),
+      rgba(126, 184, 255, 0.18) 15%,
+      rgba(179, 136, 255, 0.12) 35%,
+      rgba(255, 143, 136, 0.08) 55%,
+      transparent 75%
     );
   transition: opacity 220ms ease;
   z-index: 0;
@@ -809,7 +792,7 @@ body.credential-open .grid-glow {
 .is-hovered,
 .button:hover,
 .contact-links a:hover {
-  border-color: rgba(255, 136, 148, 0.34);
+  border-color: rgba(126, 184, 255, 0.38);
 }
 
 .hero-card:hover,
@@ -817,8 +800,8 @@ body.credential-open .grid-glow {
 .featured-case:hover,
 .timeline-item:hover,
 .project:hover {
-  border-color: rgba(255, 136, 148, 0.38);
-  box-shadow: 0 30px 100px rgba(41, 83, 130, 0.16), 0 0 0 1px rgba(255, 136, 148, 0.08);
+  border-color: rgba(126, 184, 255, 0.42);
+  box-shadow: 0 30px 100px rgba(126, 184, 255, 0.12), 0 0 0 1px rgba(179, 136, 255, 0.1);
 }
 
 .certification-item:hover,
@@ -826,8 +809,8 @@ body.credential-open .grid-glow {
 .fact:hover,
 .contact-section:hover,
 .credential-viewer:hover {
-  border-color: rgba(255, 136, 148, 0.34);
-  box-shadow: 0 26px 90px rgba(41, 83, 130, 0.15), 0 0 0 1px rgba(255, 136, 148, 0.06);
+  border-color: rgba(126, 184, 255, 0.34);
+  box-shadow: 0 26px 90px rgba(126, 184, 255, 0.1), 0 0 0 1px rgba(179, 136, 255, 0.08);
 }
 
 .hero-card:hover::before,
@@ -886,8 +869,7 @@ body.credential-open .grid-glow {
     cursor: auto;
   }
 
-  .cursor-dot,
-  .cursor-ring {
+  .custom-cursor {
     display: none;
   }
 

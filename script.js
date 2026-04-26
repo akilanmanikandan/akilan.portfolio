@@ -1,5 +1,4 @@
-const cursorDot = document.querySelector(".cursor-dot");
-const cursorRing = document.querySelector(".cursor-ring");
+const customCursor = document.querySelector(".custom-cursor");
 const interactiveNodes = document.querySelectorAll(".interactive");
 const revealNodes = document.querySelectorAll(".reveal");
 const credentialItems = document.querySelectorAll("[data-credential-src]");
@@ -12,18 +11,16 @@ const tiltCards = document.querySelectorAll(
 
 let cursorX = window.innerWidth / 2;
 let cursorY = window.innerHeight / 2;
-let ringX = cursorX;
-let ringY = cursorY;
+let currentX = cursorX;
+let currentY = cursorY;
 
 function animateCursor() {
-  ringX += (cursorX - ringX) * 0.18;
-  ringY += (cursorY - ringY) * 0.18;
+  currentX += (cursorX - currentX) * 0.15;
+  currentY += (cursorY - currentY) * 0.15;
 
-  if (cursorDot && cursorRing) {
-    cursorDot.style.left = `${cursorX}px`;
-    cursorDot.style.top = `${cursorY}px`;
-    cursorRing.style.left = `${ringX}px`;
-    cursorRing.style.top = `${ringY}px`;
+  if (customCursor) {
+    customCursor.style.left = `${currentX}px`;
+    customCursor.style.top = `${currentY}px`;
   }
 
   requestAnimationFrame(animateCursor);
@@ -39,10 +36,10 @@ function createClickBurst(x, y) {
 }
 
 function setCursorActive(active) {
-  if (!cursorRing) {
+  if (!customCursor) {
     return;
   }
-  cursorRing.classList.toggle("active", active);
+  customCursor.classList.toggle("active", active);
 }
 
 interactiveNodes.forEach((node) => {
