@@ -34,7 +34,7 @@ I am a Computer Science undergraduate with hands-on experience building backend 
 
 🎓 **SRM Institute of Science and Technology**  
 B.Tech in Computer Science and Engineering  
-CGPA: `8.35 / 10.0`
+CGPA: `9.1 / 10.0`
 
 ## ✦ Contact
 
